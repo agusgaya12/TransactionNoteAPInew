@@ -1,0 +1,30 @@
+const express = require('express')
+const bodyParser = require('body-parser')
+const rootRoute = require('./routes/rootRoute')
+const registerRoute = require('./routes/registerRoute')
+const loginRoute = require('./routes/loginRoutes')
+const addTransactions = require('./routes/transaction/addTransactions')
+const getTransactions = require('./routes/transaction/getTransactions')
+const editTransactions = require('./routes/transaction/editTransactions')
+const addStores = require('./routes/stores/addStores')
+const getStores = require('./routes/stores/getStores')
+const addBooks = require('./routes/books/addBooks')
+const getBooks = require('./routes/books/getBooks')
+
+const app = express()
+app.use(bodyParser.json())
+app.use(rootRoute)
+app.use(registerRoute)
+app.use(loginRoute)
+app.use(addTransactions)
+app.use(getTransactions)
+app.use(editTransactions)
+app.use(addStores)
+app.use(getStores)
+app.use(addBooks)
+app.use(getBooks)
+
+const port = 3000
+app.listen(port, () => {
+  console.log(`Backend app is running in http://localhost:${port}`);
+})
